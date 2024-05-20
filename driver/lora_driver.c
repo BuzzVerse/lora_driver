@@ -487,7 +487,6 @@ lora_status_t lora_send_packet(uint8_t *buf, uint8_t size)
    while (1)
    {
       ret = lora_read_reg(REG_IRQ_FLAGS, irq);
-      printf("lora_read_reg=0x%x\n", *irq);
 
       if ((*irq & IRQ_TX_DONE_MASK) == IRQ_TX_DONE_MASK)
       {

@@ -82,6 +82,6 @@ typedef enum
 
 #define TIMEOUT_RESET 100
 
-#define TAG "LORA_DRIVER"
+#define LORA_TAG "LORA_DRIVER"
 
 #endif // LORA_DRIVER_DEFS_H
