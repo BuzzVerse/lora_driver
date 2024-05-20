@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "lora_driver_defs.h"
-#include "api/lora_api_config.h"
 #include "api/driver_api.h"
 
 static uint8_t __implicit;
