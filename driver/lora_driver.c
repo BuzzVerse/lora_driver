@@ -46,7 +46,7 @@ lora_status_t lora_read_reg(uint8_t reg, uint8_t *val)
    }
    else
    {
-      return LORA_FAIL;
+      return LORA_FAILED_SPI_READ;
    }
 }
 
