@@ -489,11 +489,12 @@ lora_status_t lora_send_packet(uint8_t *buf, uint8_t size)
    while (1)
    {
       ret = lora_read_reg(REG_IRQ_FLAGS, irq);
+      printf("%ld lora_read_reg=0x%x\n", loop, *irq);
 
       if ((*irq & IRQ_TX_DONE_MASK) == IRQ_TX_DONE_MASK)
       {
          printf("IRQ_TX_DONE_MASK\n");
-         printf("Time taken(ms): %d\n", loop);
+         printf("Time taken(ms): %ld\n", loop * 2);
          break;
       }
       loop++;

@@ -9,21 +9,26 @@
 #ifndef LORA_DRIVER_H
 #define LORA_DRIVER_H
 
-#include <string.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "esp_system.h"
-#include "esp_log.h"
-#include "driver/spi_master.h"
-#include "driver/gpio.h"
+#include <stdint.h>
+#include <stdbool.h>
 #include "lora_driver_defs.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/** @brief Handle for the SPI device connection to the LoRa module. */
-extern spi_device_handle_t __spi;
+    typedef enum
+    {
+        LORA_OK,
+        LORA_FAIL,
+        LORA_FAILED_INIT,
+        LORA_FAILED_SPI_WRITE,
+        LORA_FAILED_SPI_WRITE_BUF,
+        LORA_FAILED_SPI_READ,
+        LORA_FAILED_SPI_READ_BUF,
+        LORA_FAILED_SEND_PACKET,
+        LORA_DELAY_FAIL
+    } lora_status_t;
 
 /** @brief Implicit header mode indicator. */
 extern int __implicit;
