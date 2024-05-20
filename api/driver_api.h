@@ -3,10 +3,10 @@
 
 #include <stdint.h>
 
-typedef enum {
+typedef enum
+{
     API_OK,
-    API_SPI_ERROR,
-    API_LORA_RESET_ERROR
+    API_SPI_ERROR
 } api_status_t;
 
 api_status_t spi_init(void);
@@ -20,7 +20,5 @@ api_status_t spi_read(uint8_t reg, uint8_t *val);
 api_status_t spi_read_buf(uint8_t reg, uint8_t *val, uint16_t len);
 
 void lora_delay(uint32_t ticks);
-
-void lora_reset(void);
 
 #endif // SPI_API_H

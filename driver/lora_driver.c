@@ -91,17 +91,17 @@ lora_status_t lora_implicit_header_mode(uint8_t size)
    return ret;
 }
 
-lora_status_t lora_idle(void)
+lora_status_t lora_idle_mode(void)
 {
    return lora_write_reg(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_STDBY);
 }
 
-lora_status_t lora_sleep(void)
+lora_status_t lora_sleep_mode(void)
 {
    return lora_write_reg(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_SLEEP);
 }
 
-lora_status_t lora_receive(void)
+lora_status_t lora_receive_mode(void)
 {
    return lora_write_reg(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_RX_CONTINUOUS);
 }
@@ -426,12 +426,11 @@ lora_status_t lora_dump_registers(void)
    return LORA_OK;
 }
 
-lora_status_t lora_init(void)
+lora_status_t lora_driver_init(void)
 {
    lora_status_t ret;
 
    spi_init();
-   lora_reset();
 
    uint8_t version;
    uint8_t i = 0;
@@ -448,7 +447,7 @@ lora_status_t lora_init(void)
    if (i == TIMEOUT_RESET + 1)
       return LORA_FAILED_INIT;
 
-   ret = lora_sleep();
+   ret = lora_sleep_mode();
    ret += lora_write_reg(REG_FIFO_RX_BASE_ADDR, 0);
    ret += lora_write_reg(REG_FIFO_TX_BASE_ADDR, 0);
    uint8_t lna_val;
@@ -457,7 +456,7 @@ lora_status_t lora_init(void)
    ret += lora_write_reg(REG_MODEM_CONFIG_3, 0x04);
    ret += lora_set_tx_power(17);
 
-   ret += lora_idle();
+   ret += lora_idle_mode();
 
    return ret;
 }
@@ -466,7 +465,7 @@ lora_status_t lora_send_packet(uint8_t *buf, uint8_t size)
 {
    lora_status_t ret;
 
-   ret = lora_idle();
+   ret = lora_idle_mode();
    ret += lora_write_reg(REG_FIFO_ADDR_PTR, 0);
 
    ret += lora_write_reg_buffer(REG_FIFO, buf, size);
@@ -489,12 +488,12 @@ lora_status_t lora_send_packet(uint8_t *buf, uint8_t size)
    while (1)
    {
       ret = lora_read_reg(REG_IRQ_FLAGS, irq);
-      printf("%ld lora_read_reg=0x%x\n", loop, *irq);
+      printf("lora_read_reg=0x%x\n", *irq);
 
       if ((*irq & IRQ_TX_DONE_MASK) == IRQ_TX_DONE_MASK)
       {
          printf("IRQ_TX_DONE_MASK\n");
-         printf("Time taken(ms): %ld\n", loop * 2);
+         printf("Time taken(ms): %d\n", loop * 2);
          break;
       }
       loop++;
@@ -530,7 +529,7 @@ lora_status_t lora_receive_packet(uint8_t *buf, uint8_t *return_len, uint8_t siz
    else
       lora_read_reg(REG_RX_NB_BYTES, &len);
 
-   lora_idle();
+   lora_idle_mode();
 
    uint8_t reg_val;
 
@@ -562,7 +561,7 @@ lora_status_t lora_received(bool *received)
       if (reg_val & IRQ_PAYLOAD_CRC_ERROR)
       {
          printf("CRC Error\n");
-         lora_write_reg(REG_IRQ_FLAGS, IRQ_PAYLOAD_CRC_ERROR_MASK);
+         lora_write_reg(REG_IRQ_FLAGS, IRQ_PAYLOAD_CRC_ERROR_MASK); 
       }
       else
       {
@@ -621,7 +620,7 @@ lora_status_t lora_packet_snr(uint8_t *snr)
 
 void lora_close(void)
 {
-   lora_sleep();
+   lora_sleep_mode();
    //   close(__spi);  FIXME: end hardware features after lora_close
    //   close(__cs);
    //   close(__rst);
