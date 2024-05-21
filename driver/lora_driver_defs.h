@@ -11,15 +11,16 @@
  */
 typedef enum
 {
-    LORA_OK,                   /**< The operation was successful. */
-    LORA_FAIL,                 /**< The operation failed. */
-    LORA_FAILED_INIT,          /**< The initialization of the LoRa module failed. */
-    LORA_FAILED_SPI_WRITE,     /**< The SPI write operation failed. */
-    LORA_FAILED_SPI_WRITE_BUF, /**< The SPI write buffer operation failed. */
-    LORA_FAILED_SPI_READ,      /**< The SPI read operation failed. */
-    LORA_FAILED_SPI_READ_BUF,  /**< The SPI read buffer operation failed. */
-    LORA_FAILED_SEND_PACKET,   /**< The packet sending operation failed. */
-    LORA_DELAY_FAIL            /**< The delay operation failed. */
+    LORA_OK,                    /**< The operation was successful. */
+    LORA_FAIL,                  /**< The operation failed. */
+    LORA_FAILED_INIT,           /**< The initialization of the LoRa module failed. */
+    LORA_FAILED_SPI_WRITE,      /**< The SPI write operation failed. */
+    LORA_FAILED_SPI_WRITE_BUF,  /**< The SPI write buffer operation failed. */
+    LORA_FAILED_SPI_READ,       /**< The SPI read operation failed. */
+    LORA_FAILED_SPI_READ_BUF,   /**< The SPI read buffer operation failed. */
+    LORA_FAILED_SEND_PACKET,    /**< The packet sending operation failed. */
+    LORA_FAILED_RECEIVE_PACKET, /**< The packet receiving operation failed. */
+    LORA_DELAY_FAIL             /**< The delay operation failed. */
 } lora_status_t;
 
 /*
