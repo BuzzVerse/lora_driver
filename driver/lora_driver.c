@@ -439,7 +439,7 @@ lora_status_t lora_driver_init(void)
       printf("version=0x%02x\n", version);
       if (version == 0x12)
          break;
-      lora_delay(2);
+      lora_delay(20);
    }
    printf("i=%d, TIMEOUT_RESET=%d", i, TIMEOUT_RESET);
 
@@ -491,13 +491,13 @@ lora_status_t lora_send_packet(uint8_t *buf, uint8_t size)
       if ((*irq & IRQ_TX_DONE_MASK) == IRQ_TX_DONE_MASK)
       {
          printf("IRQ_TX_DONE_MASK\n");
-         printf("Time taken(ms): %d\n", loop * 2);
+         printf("Time taken(ms): %d\n", loop * 10);
          break;
       }
       loop++;
       if (loop == 65535)
          break;
-      lora_delay(1);
+      lora_delay(10);
    }
    if (loop == 65535)
    {

@@ -84,12 +84,12 @@ api_status_t spi_read(uint8_t reg, uint8_t *val);
 api_status_t spi_read_buf(uint8_t reg, uint8_t *val, uint16_t len);
 
 /**
- * @brief Delay execution for a specified number of ticks.
+ * @brief Delay execution for a specified number of ms.
  *
- * @details This function introduces a delay in execution for a given number of ticks.
+ * @details This function introduces a delay in execution for a given number of ms.
  *
- * @param ticks The number of ticks to delay.
+ * @param ms The number of ms to delay.
  */
-void lora_delay(uint32_t ticks);
+void lora_delay(uint32_t ms);
 
 #endif // SPI_API_H
