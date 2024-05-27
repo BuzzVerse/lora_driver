@@ -544,7 +544,7 @@ lora_status_t lora_receive_packet(uint8_t *buf, uint8_t *return_len, uint8_t siz
    return LORA_OK;
 }
 
-lora_status_t lora_received(bool *received)
+lora_status_t lora_received(bool *received, bool *crc_error)
 {
    uint8_t reg_val;
    if (lora_read_reg(REG_IRQ_FLAGS, &reg_val) != LORA_OK)
@@ -558,13 +558,12 @@ lora_status_t lora_received(bool *received)
 
       if (reg_val & IRQ_PAYLOAD_CRC_ERROR)
       {
-         printf("CRC Error\n");
+         *crc_error = true;
          lora_write_reg(REG_IRQ_FLAGS, IRQ_PAYLOAD_CRC_ERROR_MASK); 
       }
       else
       {
-
-         printf("CRC OK\n");
+         *crc_error = false;
       }
    }
    else

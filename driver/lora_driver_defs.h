@@ -20,7 +20,8 @@ typedef enum
     LORA_FAILED_SPI_READ_BUF,   /**< The SPI read buffer operation failed. */
     LORA_FAILED_SEND_PACKET,    /**< The packet sending operation failed. */
     LORA_FAILED_RECEIVE_PACKET, /**< The packet receiving operation failed. */
-    LORA_DELAY_FAIL             /**< The delay operation failed. */
+    LORA_DELAY_FAIL,            /**< The delay operation failed. */
+    LORA_CRC_ERROR,             /**< The CRC check failed. */
 } lora_status_t;
 
 /*

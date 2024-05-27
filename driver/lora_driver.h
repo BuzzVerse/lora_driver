@@ -223,7 +223,7 @@ extern "C"
      * @param received Pointer to store the received status.
      * @return lora_status_t Result of check.
      */
-    lora_status_t lora_received(bool *received);
+    lora_status_t lora_received(bool *received, bool *crc_error);
 
     /**
      * @brief Returns RegIrqFlags.
