@@ -505,6 +505,8 @@ lora_status_t lora_send_packet(uint8_t *buf, uint8_t size)
       printf("lora_send_packet Fail\n");
    }
 
+   lora_sleep_mode();
+
    return lora_write_reg(REG_IRQ_FLAGS, IRQ_TX_DONE_MASK);
 }
 

@@ -10,8 +10,8 @@
  */
 typedef enum
 {
-    API_OK,        /**< The operation was successful. */
-    API_SPI_ERROR  /**< The SPI operation encountered an error. */
+    API_OK,       /**< The operation was successful. */
+    API_SPI_ERROR /**< The SPI operation encountered an error. */
 } api_status_t;
 
 /**
@@ -91,5 +91,12 @@ api_status_t spi_read_buf(uint8_t reg, uint8_t *val, uint16_t len);
  * @param ms The number of ms to delay.
  */
 void lora_delay(uint32_t ms);
+
+/**
+ * @brief Reset the LoRa module.
+ *
+ * @details This function resets the LoRa module by toggling the reset pin.
+ */
+void lora_reset(void);
 
 #endif // SPI_API_H
