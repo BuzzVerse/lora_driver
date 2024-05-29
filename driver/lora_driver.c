@@ -561,7 +561,7 @@ lora_status_t lora_received(bool *received, bool *crc_error)
       if (reg_val & IRQ_PAYLOAD_CRC_ERROR)
       {
          *crc_error = true;
-         lora_write_reg(REG_IRQ_FLAGS, IRQ_PAYLOAD_CRC_ERROR_MASK); 
+         lora_write_reg(REG_IRQ_FLAGS, IRQ_PAYLOAD_CRC_ERROR_MASK);
       }
       else
       {
