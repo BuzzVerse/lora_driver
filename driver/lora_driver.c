@@ -310,7 +310,7 @@ lora_status_t lora_set_bandwidth(uint8_t sbw)
    return LORA_FAIL;
 }
 
-lora_status_t lora_get_bandwidth(uint8_t *bw)
+lora_status_t lora_get_bandwidth(uint8_t *sbw)
 {
    uint8_t reg_val;
    if (lora_read_reg(REG_MODEM_CONFIG_1, &reg_val) != LORA_OK)
@@ -318,7 +318,7 @@ lora_status_t lora_get_bandwidth(uint8_t *bw)
       return LORA_FAIL;
    }
 
-   *bw = ((reg_val & 0xf0) >> 4);
+   *sbw = ((reg_val & 0xf0) >> 4);
    return LORA_OK;
 }
 

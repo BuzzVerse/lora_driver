@@ -143,10 +143,10 @@ extern "C"
 
     /**
      * @brief Get bandwidth (bit rate).
-     * @param bw Pointer to store bandwidth.
+     * @param sbw Pointer to store the signal bandwidth.
      * @return lora_status_t Result of operation.
      */
-    lora_status_t lora_get_bandwidth(uint8_t *bw);
+    lora_status_t lora_get_bandwidth(uint8_t *sbw);
 
     /**
      * @brief Set coding rate.
@@ -221,6 +221,7 @@ extern "C"
     /**
      * @brief Check if there is data to read (packet received).
      * @param received Pointer to store the received status.
+     * @param crc_error Pointer to store the CRC error status.
      * @return lora_status_t Result of check.
      */
     lora_status_t lora_received(bool *received, bool *crc_error);
