@@ -451,7 +451,6 @@ lora_status_t lora_driver_init(void)
    lora_read_reg(REG_LNA, &lna_val);
    ret += lora_write_reg(REG_LNA, lna_val | 0x03);
    ret += lora_write_reg(REG_MODEM_CONFIG_3, 0x04);
-   ret += lora_set_tx_power(17);
 
    ret += lora_idle_mode();
 
