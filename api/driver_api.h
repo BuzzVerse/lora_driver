@@ -11,9 +11,10 @@
 typedef enum
 {
     API_OK,                     /**< The operation was successful. */
-    API_FAILED_SPI_SET_PIN,     /** The pin has failed to have been set */
+    API_FAILED_SPI_SET_PIN,     /**< The pin has failed to have been set */
+    API_FAILED_SPI_SET_LEVEL,   /**< The spi level failed to be set for a pin */
     API_FAILED_SPI_CHIP_SELECT, /**< The SPI chip select operation failed. */
-    API_FAILED_SPI_ADD_DEVICE,  /** The spi device failed to be added */
+    API_FAILED_SPI_ADD_DEVICE,  /**< The spi device failed to be added */
     API_FAILED_SPI_INIT,        /**< The SPI initialization failed. */
     API_FAILED_SPI_READ,        /**< The SPI read operation failed. */
     API_FAILED_SPI_READ_BUF,    /**< The SPI read buffer operation failed. */
