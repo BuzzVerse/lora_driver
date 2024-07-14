@@ -82,6 +82,12 @@ typedef enum
 #define PA_OUTPUT_RFO_PIN 0
 #define PA_OUTPUT_PA_BOOST_PIN 1
 
+/*
+ * Lora delays
+ */
+#define LORA_DELAY_10MS 10
+#define LORA_DELAY_20MS 20
+
 #define TIMEOUT_RESET 100
 
 #define LORA_TAG "LORA_DRIVER"

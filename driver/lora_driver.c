@@ -438,7 +438,7 @@ lora_status_t lora_driver_init(void)
       lora_read_reg(REG_VERSION, &version);
       if (version == 0x12)
          break;
-      lora_delay(20);
+      lora_delay(LORA_DELAY_20MS);
    }
 
    if (i == TIMEOUT_RESET + 1)
@@ -493,7 +493,7 @@ lora_status_t lora_send_packet(uint8_t *buf, uint8_t size)
       loop++;
       if (loop == 65535)
          break;
-      lora_delay(10);
+      lora_delay(LORA_DELAY_10MS);
    }
    if (loop == 65535)
    {
