@@ -109,6 +109,6 @@ void lora_delay(uint32_t ms);
  *
  * @return api_status_t Result of the reset operation.
  */
-api_status_t lora_reset(void)
+api_status_t lora_reset(void);
 
 #endif // SPI_API_H
