@@ -106,7 +106,9 @@ void lora_delay(uint32_t ms);
  * @brief Reset the LoRa module.
  *
  * @details This function resets the LoRa module by toggling the reset pin.
+ *
+ * @return api_status_t Result of the reset operation.
  */
-void lora_reset(void);
+api_status_t lora_reset(void)
 
 #endif // SPI_API_H
