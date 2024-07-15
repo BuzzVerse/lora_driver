@@ -20,6 +20,7 @@ typedef enum
     API_FAILED_SPI_READ_BUF,    /**< The SPI read buffer operation failed. */
     API_FAILED_SPI_WRITE,       /**< The SPI write operation failed. */
     API_FAILED_SPI_WRITE_BUF,   /**< The SPI write buffer operation failed. */
+    API_BUFFER_TOO_LARGE,       /**< The buffer is to large to assign. */
     API_NULL_POINTER_ERROR,     /**< The pointer is NULL. */
     API_SPI_ERROR               /**< The SPI operation encountered an error. */
 } api_status_t;
