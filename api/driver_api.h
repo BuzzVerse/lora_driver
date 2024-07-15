@@ -63,7 +63,7 @@ api_status_t spi_write(uint8_t reg, uint8_t val);
  *         - API_OK: The write operation was successful.
  *         - API_SPI_ERROR: There was an error during the write operation.
  */
-api_status_t spi_write_buf(uint8_t reg, uint8_t *val, uint16_t len);
+api_status_t spi_write_buf(uint8_t reg, uint8_t *val, uint8_t len);
 
 /**
  * @brief Read a value from an SPI register.
@@ -92,7 +92,7 @@ api_status_t spi_read(uint8_t reg, uint8_t *val);
  *         - API_OK: The read operation was successful.
  *         - API_SPI_ERROR: There was an error during the read operation.
  */
-api_status_t spi_read_buf(uint8_t reg, uint8_t *val, uint16_t len);
+api_status_t spi_read_buf(uint8_t reg, uint8_t *val, uint8_t len);
 
 /**
  * @brief Delay execution for a specified number of ms.
