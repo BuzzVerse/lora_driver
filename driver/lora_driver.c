@@ -145,7 +145,7 @@ lora_status_t lora_set_spreading_factor(uint8_t sf)
       sf = 12;
    }
 
-   if (sf == 6)
+   if (6 == sf)
    {
       ret = lora_write_reg(REG_DETECTION_OPTIMIZE, 0xc5);
       ret += lora_write_reg(REG_DETECTION_THRESHOLD, 0x0c);
@@ -187,22 +187,22 @@ lora_status_t lora_set_dio_mapping(uint8_t dio, uint8_t mode)
          return ret;
       }
 
-      if (dio == 0)
+      if (0 == dio)
       {
          _mode = _mode & 0x3F;
          _mode = _mode | (mode << 6);
       }
-      else if (dio == 1)
+      else if (1 == dio)
       {
          _mode = _mode & 0xCF;
          _mode = _mode | (mode << 4);
       }
-      else if (dio == 2)
+      else if (2 == dio)
       {
          _mode = _mode & 0xF3;
          _mode = _mode | (mode << 2);
       }
-      else if (dio == 3)
+      else if (3 == dio)
       {
          _mode = _mode & 0xFC;
          _mode = _mode | mode;
@@ -216,12 +216,12 @@ lora_status_t lora_set_dio_mapping(uint8_t dio, uint8_t mode)
    {
       ret = lora_read_reg(REG_DIO_MAPPING_2, &mode);
 
-      if (dio == 4)
+      if (4 == dio)
       {
          _mode = _mode & 0x3F;
          _mode = _mode | (mode << 6);
       }
-      else if (dio == 5)
+      else if (5 == dio)
       {
          _mode = _mode & 0xCF;
          _mode = _mode | (mode << 4);
@@ -250,19 +250,19 @@ lora_status_t lora_get_dio_mapping(uint8_t dio, uint8_t *mapping)
 
       printf("REG_DIO_MAPPING_1=0x%02x", _mode);
 
-      if (dio == 0)
+      if (0 == dio)
       {
          *mapping = ((_mode >> 6) & 0x03);
       }
-      else if (dio == 1)
+      else if (1 == dio)
       {
          *mapping = ((_mode >> 4) & 0x03);
       }
-      else if (dio == 2)
+      else if (2 == dio)
       {
          *mapping = ((_mode >> 2) & 0x03);
       }
-      else if (dio == 3)
+      else if (3 == dio)
       {
          *mapping = (_mode & 0x03);
       }
@@ -279,11 +279,11 @@ lora_status_t lora_get_dio_mapping(uint8_t dio, uint8_t *mapping)
 
       printf("REG_DIO_MAPPING_2=0x%02x", _mode);
 
-      if (dio == 4)
+      if (4 == dio)
       {
          *mapping = ((_mode >> 6) & 0x03);
       }
-      else if (dio == 5)
+      else if (5 == dio)
       {
          *mapping = ((_mode >> 4) & 0x03);
       }
@@ -436,12 +436,12 @@ lora_status_t lora_driver_init(void)
    while (i++ < TIMEOUT_RESET)
    {
       lora_read_reg(REG_VERSION, &version);
-      if (version == 0x12)
+      if (0x12 == version)
          break;
       lora_delay(LORA_DELAY_20MS);
    }
 
-   if (i == TIMEOUT_RESET + 1)
+   if (TIMEOUT_RESET + 1 == i)
       return LORA_FAILED_INIT;
 
    ret = lora_sleep_mode();
@@ -491,11 +491,11 @@ lora_status_t lora_send_packet(uint8_t *buf, uint8_t size)
          break;
       }
       loop++;
-      if (loop == 65535)
+      if (65535 == loop)
          break;
       lora_delay(LORA_DELAY_10MS);
    }
-   if (loop == 65535)
+   if (65535 == loop)
    {
       __send_packet_lost++;
       printf("lora_send_packet Fail\n");
@@ -515,7 +515,7 @@ lora_status_t lora_receive_packet(uint8_t *buf, uint8_t *return_len, uint8_t siz
    ret = lora_read_reg(REG_IRQ_FLAGS, &irq);
    ret += lora_write_reg(REG_IRQ_FLAGS, irq);
 
-   if ((irq & IRQ_RX_DONE_MASK) == 0)
+   if (0 == (irq & IRQ_RX_DONE_MASK))
       return LORA_FAIL;
    if (irq & IRQ_PAYLOAD_CRC_ERROR_MASK)
       return LORA_FAIL;
