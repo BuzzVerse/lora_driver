@@ -1,5 +1,5 @@
-#ifndef SPI_API_H
-#define SPI_API_H
+#ifndef _SPI_API_H_
+#define _SPI_API_H_
 
 #include <stdint.h>
 
@@ -112,4 +112,4 @@ void lora_delay(uint32_t ms);
  */
 api_status_t lora_reset(void);
 
-#endif // SPI_API_H
+#endif // _SPI_API_H_

@@ -1,5 +1,5 @@
-#ifndef LORA_DRIVER_DEFS_H
-#define LORA_DRIVER_DEFS_H
+#ifndef _LORA_DRIVER_DEFS_H_
+#define _LORA_DRIVER_DEFS_H_
 
 /**
  * @brief Enum for the status of the LoRa module.
@@ -92,4 +92,4 @@ typedef enum
 
 #define LORA_TAG "LORA_DRIVER"
 
-#endif // LORA_DRIVER_DEFS_H
+#endif // _LORA_DRIVER_DEFS_H_

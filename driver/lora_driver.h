@@ -6,8 +6,8 @@
  * configuration, and data transmission/reception functionalities.
  */
 
-#ifndef LORA_DRIVER_H
-#define LORA_DRIVER_H
+#ifndef _LORA_DRIVER_H_
+#define _LORA_DRIVER_H_
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -268,4 +268,4 @@ extern "C"
 }
 #endif
 
-#endif // LORA_DRIVER_H
+#endif // _LORA_DRIVER_H_
