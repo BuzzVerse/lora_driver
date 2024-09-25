@@ -176,7 +176,7 @@ lora_status_t lora_get_spreading_factor(uint8_t *sf)
 
 lora_status_t lora_set_dio_mapping(uint8_t dio, uint8_t mode)
 {
-   uint8_t _mode;
+   uint8_t _mode = 0;
    lora_status_t ret;
 
    if (dio < 4)
